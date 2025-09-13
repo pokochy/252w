@@ -1,0 +1,33 @@
+:root {
+  --primary-color: #137fec;
+  --primary-50: #f0f9ff;
+  --primary-100: #e0f2fe;
+  --primary-200: #bae6fd;
+  --primary-300: #7dd3fc;
+  --primary-400: #38bdf8;
+  --primary-500: #0ea5e9;
+  --primary-600: #0284c7;
+  --primary-700: #0369a1;
+  --primary-800: #075985;
+  --primary-900: #0c4a6e;
+  --primary-950: #082f49;
+}
+
+body {
+  min-height: max(884px, 100dvh);
+  font-family: Inter, "Noto Sans", "Noto Sans KR", sans-serif;
+  background-color: #f9fafb;
+  color: #111827;
+}
+
+button {
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+input {
+  outline: none;
+}

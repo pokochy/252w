@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Main - TaskMaster</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com/"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Noto+Sans:wght@400;500;700;900&display=swap"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body class="bg-slate-50">
+  <div class="flex flex-col min-h-screen">
+    <!-- header -->
+    <header class="flex items-center justify-between p-4 pb-2">
+      <div class="w-12"></div>
+      <h1 class="text-xl font-bold text-slate-800">My Tasks</h1>
+      <div class="flex w-12 items-center justify-end">
+        <button id="addBtn" class="flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 text-slate-800 hover:bg-slate-200">
+          <span class="material-symbols-outlined text-2xl">add</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- input -->
+    <div class="px-4 py-3">
+      <input id="taskInput" placeholder="Add a new task..."
+        class="form-input w-full rounded-lg border-slate-300 bg-white px-4 py-3 text-base text-slate-800 placeholder-slate-400 shadow-sm focus:border-blue-500 focus:ring-blue-500"/>
+    </div>
+
+    <!-- tasks -->
+    <main class="flex-1 px-4">
+      <h2 class="mb-2 text-lg font-semibold text-slate-700">Today</h2>
+      <div id="taskList" class="space-y-2"></div>
+    </main>
+
+    <!-- footer -->
+    <footer class="sticky bottom-0 bg-white shadow-[0_-1px_3px_rgba(0,0,0,0.05)]">
+      <nav class="flex justify-around px-4 pb-3 pt-2">
+        <a class="flex flex-col items-center gap-1 text-blue-600" href="#">
+          <span class="material-symbols-outlined text-2xl">checklist</span>
+          <span class="text-xs font-medium">Tasks</span>
+        </a>
+        <a class="flex flex-col items-center gap-1 text-slate-500" href="#">
+          <span class="material-symbols-outlined text-2xl">calendar_month</span>
+          <span class="text-xs font-medium">Calendar</span>
+        </a>
+        <a class="flex flex-col items-center gap-1 text-slate-500" href="profile.html">
+          <span class="material-symbols-outlined text-2xl">person</span>
+          <span class="text-xs font-medium">Profile</span>
+        </a>
+      </nav>
+    </footer>
+  </div>
+  <script src="scripts.js"></script>
+</body>
+</html>

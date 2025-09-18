@@ -1,5 +1,6 @@
+<!-- main.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="utf-8"/>
   <title>Main - TaskMaster</title>
@@ -13,10 +14,13 @@
   <div class="flex flex-col min-h-screen">
     <!-- header -->
     <header class="flex items-center justify-between p-4 pb-2">
+      <a href="login.html" class="flex items-center justify-center size-10 rounded-full hover:bg-gray-100" aria-label="back">
+        <span class="material-symbols-outlined text-gray-800">arrow_back</span>
+      </a>
       <div class="w-12"></div>
       <h1 class="text-xl font-bold text-slate-800">My Tasks</h1>
       <div class="flex w-12 items-center justify-end">
-        <button id="addBtn" class="flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 text-slate-800 hover:bg-slate-200">
+        <button id="addBtn" type="button" class="flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 text-slate-800 hover:bg-slate-200" aria-label="add task">
           <span class="material-symbols-outlined text-2xl">add</span>
         </button>
       </div>
@@ -52,6 +56,9 @@
       </nav>
     </footer>
   </div>
-  <script src="scripts.js"></script>
+
+  <script src="main.js"></script>
 </body>
 </html>
+
+

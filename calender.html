@@ -1,0 +1,124 @@
+<!-- ...existing code... -->
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Inter%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary": "#137fec",
+          "background-light": "#f6f7f8",
+          "background-dark": "#101922",
+        },
+        fontFamily: {
+          "display": ["Inter"]
+        },
+        borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+      },
+    },
+  }
+    </script>
+<title>Calendar</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="flex flex-col min-h-screen">
+<header class="sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
+  <div class="flex items-center justify-between p-4">
+    <a href="main.html" class="text-slate-800 dark:text-white p-2">
+      <svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"></path>
+      </svg>
+    </a>
+    <!-- 햄버거 버튼 제거됨 -->
+    <h1 class="text-lg font-bold text-slate-900 dark:text-white">내 작업</h1>
+    <button class="p-2 text-slate-800 dark:text-white">
+      <svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"></path>
+      </svg>
+    </button>
+  </div>
+  <div class="border-b border-slate-200 dark:border-slate-700">
+    <nav class="flex justify-around px-4">
+      <a class="flex-1 py-3 text-center text-sm font-bold text-primary border-b-2 border-primary" href="#">월</a>
+      <a class="flex-1 py-3 text-center text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">주</a>
+      <a class="flex-1 py-3 text-center text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">일</a>
+    </nav>
+  </div>
+</header>
+<main class="flex-1 overflow-y-auto p-4">
+<div class="mx-auto max-w-md">
+<div class="flex items-center justify-between mb-4">
+<button id="prevMonthBtn" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300">
+<svg fill="currentColor" height="18" viewBox="0 0 256 256" width="18" xmlns="http://www.w3.org/2000/svg">
+<path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"></path>
+</svg>
+</button>
+<p id="monthLabel" class="text-base font-bold text-slate-900 dark:text-white">2024년 7월</p>
+<button id="nextMonthBtn" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300">
+<svg fill="currentColor" height="18" viewBox="0 0 256 256" width="18" xmlns="http://www.w3.org/2000/svg">
+<path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path>
+</svg>
+</button>
+</div>
+<div class="grid grid-cols-7 gap-1 text-center text-xs font-medium text-slate-500 dark:text-slate-400 mb-2">
+<span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span>
+</div>
+<!-- days rendered by JS -->
+<div id="daysGrid" class="grid grid-cols-7 gap-1"></div>
+</div>
+<div class="mt-8">
+<h2 id="selectedDateLabel" class="text-lg font-bold text-slate-900 dark:text-white px-4 mb-3">2024년 7월 15일</h2>
+<ul id="eventsList" class="space-y-2">
+<li class="flex items-center gap-4 px-4 py-3 bg-white dark:bg-slate-800 rounded-lg">
+<button class="text-slate-400 dark:text-slate-500 hover:text-primary">
+<svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Z"></path>
+</svg>
+</button>
+<div>
+<p class="font-medium text-slate-800 dark:text-white">팀 미팅</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">오전 10:00</p>
+</div>
+</li>
+<li class="flex items-center gap-4 px-4 py-3 bg-white dark:bg-slate-800 rounded-lg">
+<button class="text-slate-400 dark:text-slate-500 hover:text-primary">
+<svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Z"></path>
+</svg>
+</button>
+<div>
+<p class="font-medium text-slate-800 dark:text-white">클라이언트와 점심</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">오후 1:00</p>
+</div>
+</li>
+<li class="flex items-center gap-4 px-4 py-3 bg-white dark:bg-slate-800 rounded-lg">
+<button class="text-slate-400 dark:text-slate-500 hover:text-primary">
+<svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Z"></path>
+</svg>
+</button>
+<div>
+<p class="font-medium text-slate-800 dark:text-white">프로젝트 검토</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">오후 3:00</p>
+</div>
+</li>
+</ul>
+</div>
+</main>
+</div>
+
+
+<script src="main.js"></script>
+<script src="calender.js"></script>
+</body></html>
